@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamworkReporter", "TeamworkReporter\TeamworkReporter.csproj", "{EE26FC0B-FB6D-475F-AA80-BD1D5563A5B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamworkReporterTests", "TeamworkReporterTests\TeamworkReporterTests.csproj", "{2B32B303-8FD4-4D38-BC43-5F197F08125D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{EE26FC0B-FB6D-475F-AA80-BD1D5563A5B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE26FC0B-FB6D-475F-AA80-BD1D5563A5B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE26FC0B-FB6D-475F-AA80-BD1D5563A5B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B32B303-8FD4-4D38-BC43-5F197F08125D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B32B303-8FD4-4D38-BC43-5F197F08125D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B32B303-8FD4-4D38-BC43-5F197F08125D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B32B303-8FD4-4D38-BC43-5F197F08125D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
