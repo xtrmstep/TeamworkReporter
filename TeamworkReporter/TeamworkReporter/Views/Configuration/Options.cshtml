@@ -1,3 +1,17 @@
-﻿@model dynamic
-
-
+﻿@model TeamworkReporter.Models.OptionsViewModel
+@{
+    ViewBag.Title = "Options";
+}
+@using (Html.BeginForm("Options"))
+{
+    <div class="form-group">
+        <label for="inputAccount">Account</label>
+        <input type="text" class="form-control" id="inputAccount" placeholder="Account" name="Account" value="@Model.Account">
+    </div>
+    <div class="form-group">
+        <label for="inputToken">Token</label>
+        <input type="text" class="form-control" id="inputToken" placeholder="Token" name="Token" value="@Model.Token">
+    </div>
+  
+    <input type="submit" value="Save" />
+}

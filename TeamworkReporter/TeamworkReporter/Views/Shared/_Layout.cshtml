@@ -1,21 +1,24 @@
 ﻿@using System.Web.Optimization
+@{
+    string pageTitle = ViewBag.Title;
+    var title = string.IsNullOrWhiteSpace(pageTitle) ? "Teamwork Reporter" : pageTitle + " : Teamwork Reporter";
+}
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>@Html.Raw(title)</title>
     @Styles.Render("~/bundles/css")
     @RenderSection("styles", false)
 </head>
 <body>
-    <div>
-        @Html.Partial("_Header")
-        @Html.Partial("_Navigation")
-        <div class="container">
-            @RenderBody()
-        </div>
-        @Html.Partial("_Footer")
+    @Html.Partial("_Header")
+    @Html.Partial("_Navigation")
+    <div class="container-fluid">
+        @RenderBody()
     </div>
+    @Html.Partial("_Footer")
     @Scripts.Render("~/bundles/js")
     @RenderSection("scripts", false)
 </body>

@@ -181,3 +181,4 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+TeamworkReporter/TeamworkReporter/App_Data/configuration.dat

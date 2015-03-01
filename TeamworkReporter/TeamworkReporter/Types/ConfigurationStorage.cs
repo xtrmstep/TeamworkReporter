@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Web;
 
 namespace TeamworkReporter.Types
 {
     public class ConfigurationStorage
     {
-        private string storageFilePath;
+        private readonly string storageFilePath;
         /// <summary>
         /// Create a file storage for configuration
         /// </summary>
