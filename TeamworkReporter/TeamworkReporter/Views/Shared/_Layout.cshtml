@@ -9,7 +9,12 @@
 </head>
 <body>
     <div>
-        @RenderBody()
+        @Html.Partial("_Header")
+        @Html.Partial("_Navigation")
+        <div class="container">
+            @RenderBody()
+        </div>
+        @Html.Partial("_Footer")
     </div>
     @Scripts.Render("~/bundles/js")
     @RenderSection("scripts", false)

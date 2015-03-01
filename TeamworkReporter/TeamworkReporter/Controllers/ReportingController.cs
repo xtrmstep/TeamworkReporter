@@ -6,16 +6,11 @@ using System.Web.Mvc;
 
 namespace TeamworkReporter.Controllers
 {
-    public class ConfigurationController : Controller
+    public class ReportingController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Timelogs()
         {
             return View();
         }
-
-        public ActionResult Options()
-        {
-            return View();
-        }
-    }
+	}
 }
