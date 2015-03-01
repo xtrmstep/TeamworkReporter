@@ -1,13 +1,17 @@
-﻿<!DOCTYPE html>
-
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    @Styles.Render("~/bundles/css")
+    @RenderSection("styles", false)
 </head>
 <body>
     <div>
         @RenderBody()
     </div>
+    @Scripts.Render("~/bundles/js")
+    @RenderSection("scripts", false)
 </body>
 </html>
