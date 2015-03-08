@@ -56,6 +56,7 @@
                             {
                                 <th>@header</th>
                             }
+                            <th>Total</th>
                         </tr>
 
                     </thead>
@@ -63,6 +64,7 @@
                         @foreach (var person in Model.Grid.Hours.Keys)
                         {
                             var hours = Model.Grid.Hours[person];
+                            var total = Model.Grid.Totals[person];
                             
                             <tr>
                                 <td>@person</td>
@@ -70,6 +72,7 @@
                                 {
                                     <td>@hour</td>
                                 }
+                                <td><strong>@total</strong></td>
                             </tr>
                         }
                     </tbody>

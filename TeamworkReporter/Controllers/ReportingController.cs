@@ -24,15 +24,26 @@ namespace TeamworkReporter.Controllers
                 {
                     Headers = new[]
                     {
-                        DateTime.Today.AddDays(-2).ToShortDateString(),
-                        DateTime.Today.AddDays(-1).ToShortDateString(),
-                        DateTime.Today.ToShortDateString()
+                        DateTime.Today.AddDays(-8).ToString("dd/MM/yy"),
+                        DateTime.Today.AddDays(-7).ToString("dd/MM/yy"),
+                        DateTime.Today.AddDays(-6).ToString("dd/MM/yy"),
+                        DateTime.Today.AddDays(-5).ToString("dd/MM/yy"),
+                        DateTime.Today.AddDays(-4).ToString("dd/MM/yy"),
+                        DateTime.Today.AddDays(-3).ToString("dd/MM/yy"),
+                        DateTime.Today.AddDays(-2).ToString("dd/MM/yy"),
+                        DateTime.Today.AddDays(-1).ToString("dd/MM/yy"),
+                        DateTime.Today.ToString("dd/MM/yy")
                     },
                     Hours = new Dictionary<string, IEnumerable<double>>
                     {
-                        {"Alex Guid", new[] {1.5, 4, 3.6}},
-                        {"Alex Guid 2", new[] {1.23, 4.5, 3.67}}
-                    }
+                        {"Alex Guid", new[] {1.5, 4, 3.6, 8, 8, 8,8,8,8}},
+                        {"Alex Guid 2", new[] {1.23, 4.5, 3.67, 8, 8, 8,8,8,8}}
+                    },
+                    Totals = new Dictionary<string, double>
+                    {
+                        {"Alex Guid", 40},
+                        {"Alex Guid 2", 40}
+                    },
                 }
             };
 
