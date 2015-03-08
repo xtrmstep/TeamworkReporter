@@ -1,4 +1,5 @@
-﻿@model TeamworkReporter.Models.OptionsViewModel
+﻿@using TeamworkReporter.Models
+@model TeamworkReporter.Models.OptionsViewModel
 @{
     ViewBag.Title = "Options";
 }
@@ -6,12 +7,13 @@
 {
     <div class="form-group">
         <label for="inputAccount">Account</label>
-        <input type="text" class="form-control" id="inputAccount" placeholder="Account" name="Account" value="@Model.Account">
+        <input type="text" class="form-control" id="inputAccount" placeholder="Account" name="@Html.NameFor(m => m.Account)" value="@Model.Account">
     </div>
     <div class="form-group">
         <label for="inputToken">Token</label>
-        <input type="text" class="form-control" id="inputToken" placeholder="Token" name="Token" value="@Model.Token">
+        <input type="text" class="form-control" id="inputToken" placeholder="Token" name="@Html.NameFor(m => m.Token)" value="@Model.Token">
     </div>
   
-    <input type="submit" value="Save" />
+    <button type="submit" name="@Html.NameFor(m => m.Command)" value="@Command.OptionsSave">Save</button>
+    <button type="submit" name="@Html.NameFor(m => m.Command)" value="@Command.OptionsClear">Clear</button>
 }

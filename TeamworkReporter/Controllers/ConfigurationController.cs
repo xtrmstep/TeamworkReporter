@@ -28,8 +28,16 @@ namespace TeamworkReporter.Controllers
         {
             if (ModelState.IsValid)
             {
-                Settings.Config.Account = model.Account;
-                Settings.Config.Token = model.Token;
+                if (model.Command == Command.OptionsSave)
+                {
+                    Settings.Config.Account = model.Account;
+                    Settings.Config.Token = model.Token;
+                }
+                else
+                {
+                    Settings.Config.Account = string.Empty;
+                    Settings.Config.Token = string.Empty;
+                }
             }
             Settings.Storage.Save(Settings.Config);
             return RedirectToAction("Options");
