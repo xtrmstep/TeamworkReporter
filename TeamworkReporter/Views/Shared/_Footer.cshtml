@@ -1,2 +1,17 @@
-﻿@model dynamic
+﻿@using System.Diagnostics
+@using System.Reflection
+@using System.Threading
+@model dynamic
+@{
+    const int startYear = 2015;
+    var endYear = DateTime.Today.Year;
+    var years = startYear != endYear ? startYear + " - " + endYear : startYear.ToString();
 
+    var assembly = typeof(MvcApplication).Assembly;
+    var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+    var version = fvi.FileVersion;
+}
+
+<p class="text-muted">Copyrights &copy; @years, Alexander Goida<br/>
+    Version: @version
+</p>

@@ -18,7 +18,11 @@
     <div class="container-fluid">
         @RenderBody()
     </div>
-    @Html.Partial("_Footer")
+    <footer class="footer">
+        <div class="container-fluid">
+            @Html.Partial("_Footer")
+        </div>
+    </footer>
     @Scripts.Render("~/bundles/js")
     @RenderSection("scripts", false)
 </body>

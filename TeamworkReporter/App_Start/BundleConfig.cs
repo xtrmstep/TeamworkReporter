@@ -15,7 +15,8 @@ namespace TeamworkReporter
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
                 "~/Content/bootstrap.css",
-                "~/Content/bootstrap-theme.css"
+                "~/Content/bootstrap-theme.css",
+                "~/Content/site.css"
                 ));
 
             BundleTable.EnableOptimizations = true;
