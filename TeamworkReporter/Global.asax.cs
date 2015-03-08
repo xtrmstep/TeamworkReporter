@@ -18,9 +18,9 @@ namespace TeamworkReporter
 
         protected void Application_BeginRequest()
         {
-            var configFile = AppSettings.ConfigFile();
-            Settings.Storage = new ConfigurationStorage(Server.MapPath(configFile));
-            Settings.Config = Settings.Storage.Load();
+            //var configFile = AppSettings.ConfigFile();
+            //Settings.Storage = new ConfigurationStorage(Server.MapPath(configFile));
+            //Settings.Config = Settings.Storage.Load();
         }
     }
 }
