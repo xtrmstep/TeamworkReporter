@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using System.Web.Mvc;
 using TeamworkReporter.Models;
+using TeamworkReporter.Models.Options;
 using TeamworkReporter.Types;
 
 namespace TeamworkReporter.Controllers

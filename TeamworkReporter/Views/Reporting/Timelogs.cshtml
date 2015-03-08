@@ -1,2 +1,80 @@
-﻿@model dynamic
+﻿@using TeamworkReporter.Models.Timelogs
+@model TeamworkReporter.Models.Timelogs.TimelogsViewModel
 
+@{
+    Func<TimelogsPeriod, TimelogsPeriod, string, string> isPeriod = (t1, t2, a) => t1 == t2 ? a : string.Empty;
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>People</h4>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @foreach (var person in Model.People)
+                {
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="@person.Id">
+                            @person.FullName
+                        </label>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-2">
+                <h4>Timesheet</h4>
+            </div>
+            <div class="col-md-4">
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-primary @isPeriod(Model.Period, TimelogsPeriod.Daily, "active")">
+                        <input type="radio" name="@Html.NameFor(m => m.Period)" @isPeriod(Model.Period, TimelogsPeriod.Daily, "checked")/>@TimelogsPeriod.Daily
+                    </label>
+                    <label class="btn btn-primary @isPeriod(Model.Period, TimelogsPeriod.Weekly, "active")">
+                        <input type="radio" name="@Html.NameFor(m => m.Period)" @isPeriod(Model.Period, TimelogsPeriod.Weekly, "checked")/>@TimelogsPeriod.Weekly
+                    </label>
+                    <label class="btn btn-primary @isPeriod(Model.Period, TimelogsPeriod.Monthly, "active")">
+                        <input type="radio" name="@Html.NameFor(m => m.Period)" @isPeriod(Model.Period, TimelogsPeriod.Monthly, "checked")/>@TimelogsPeriod.Monthly
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            @foreach (var header in Model.Grid.Headers)
+                            {
+                                <th>@header</th>
+                            }
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        @foreach (var person in Model.Grid.Hours.Keys)
+                        {
+                            var hours = Model.Grid.Hours[person];
+                            
+                            <tr>
+                                <td>@person</td>
+                                @foreach (var hour in hours)
+                                {
+                                    <td>@hour</td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

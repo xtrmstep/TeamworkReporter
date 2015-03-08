@@ -130,7 +130,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Command.cs" />
-    <Compile Include="Models\OptionsViewModel.cs" />
+    <Compile Include="Models\Options\OptionsViewModel.cs" />
+    <Compile Include="Models\PersonViewModel.cs" />
+    <Compile Include="Models\Timelogs\TimelogsGridViewModel.cs" />
+    <Compile Include="Models\Timelogs\TimelogsPeriod.cs" />
+    <Compile Include="Models\Timelogs\TimelogsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\Configuration.cs" />
     <Compile Include="Types\ConfigurationStorage.cs" />
