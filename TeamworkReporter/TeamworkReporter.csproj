@@ -135,12 +135,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Command.cs" />
-    <Compile Include="Models\OptionsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AssemblyInfo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Options\OptionsViewModel.cs" />
+    <Compile Include="Models\PersonViewModel.cs" />
+    <Compile Include="Models\Timelogs\TimelogsGridViewModel.cs" />
+    <Compile Include="Models\Timelogs\TimelogsPeriod.cs" />
+    <Compile Include="Models\Timelogs\TimelogsViewModel.cs" />
     <Compile Include="Types\Configuration.cs" />
     <Compile Include="Types\ConfigurationStorage.cs" />
     <Compile Include="Types\Extensions\AppSettings.cs" />
@@ -172,6 +176,10 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <ProjectReference Include="..\TeamworkReporter.TwClient\TeamworkReporter.TwClient.csproj">
+      <Project>{B6A4EBBF-3B4E-412D-8F72-7ADE7A77D814}</Project>
+      <Name>TeamworkReporter.TwClient</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamworkReporter", "Teamwor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamworkReporterTests", "TeamworkReporterTests\TeamworkReporterTests.csproj", "{2B32B303-8FD4-4D38-BC43-5F197F08125D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamworkReporter.TwClient", "TeamworkReporter.TwClient\TeamworkReporter.TwClient.csproj", "{B6A4EBBF-3B4E-412D-8F72-7ADE7A77D814}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamworkReporter.TwClientTests", "TeamworkReporter.TwClientTests\TeamworkReporter.TwClientTests.csproj", "{0A1AC7E7-1A67-4E58-9CE8-C2A2FF5232C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{2B32B303-8FD4-4D38-BC43-5F197F08125D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B32B303-8FD4-4D38-BC43-5F197F08125D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B32B303-8FD4-4D38-BC43-5F197F08125D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6A4EBBF-3B4E-412D-8F72-7ADE7A77D814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6A4EBBF-3B4E-412D-8F72-7ADE7A77D814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6A4EBBF-3B4E-412D-8F72-7ADE7A77D814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6A4EBBF-3B4E-412D-8F72-7ADE7A77D814}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A1AC7E7-1A67-4E58-9CE8-C2A2FF5232C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A1AC7E7-1A67-4E58-9CE8-C2A2FF5232C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A1AC7E7-1A67-4E58-9CE8-C2A2FF5232C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A1AC7E7-1A67-4E58-9CE8-C2A2FF5232C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
