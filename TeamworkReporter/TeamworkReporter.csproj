@@ -165,6 +165,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TeamworkReporter.TwClient\TeamworkReporter.TwClient.csproj">
+      <Project>{B6A4EBBF-3B4E-412D-8F72-7ADE7A77D814}</Project>
+      <Name>TeamworkReporter.TwClient</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

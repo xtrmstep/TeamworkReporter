@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using TeamworkReporter.Models;
 using TeamworkReporter.Models.Timelogs;
+using TeamworkReporter.TwClient;
+using TeamworkReporter.Types;
 
 namespace TeamworkReporter.Controllers
 {
@@ -12,13 +14,20 @@ namespace TeamworkReporter.Controllers
     {
         public ActionResult Timelogs()
         {
+            IProxyPeople apiPeople = new TwClient.Api.TwClient
+            {
+                SiteName = Settings.Config.Account,
+                ApiToken = Settings.Config.Token
+            };
+            var people = apiPeople.Get();
+
             var model = new TimelogsViewModel
             {
-                People = new[]
+                People = people.Select(p => new PersonViewModel
                 {
-                    new PersonViewModel {FullName = "Alex Guid", Id = Guid.NewGuid().ToString()},
-                    new PersonViewModel {FullName = "Alex Guid 2", Id = Guid.NewGuid().ToString()}
-                },
+                    FullName = string.Format("{0} {1}", p.FirstName, p.LastName),
+                    Id = p.Id.ToString()
+                }),
                 Period = TimelogsPeriod.Daily,
                 Grid = new TimelogsGridViewModel
                 {

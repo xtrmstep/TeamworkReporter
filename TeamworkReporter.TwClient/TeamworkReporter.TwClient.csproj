@@ -40,13 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\TwCategory.cs" />
     <Compile Include="Data\TwCompany.cs" />
     <Compile Include="Data\TwPerson.cs" />
     <Compile Include="Data\TwProject.cs" />
     <Compile Include="Data\TwTask.cs" />
     <Compile Include="Data\TwTaskList.cs" />
     <Compile Include="Data\TwTimeEntry.cs" />
-    <Compile Include="Data\TwСategory.cs" />
     <Compile Include="Logging\DefaultLog.cs" />
     <Compile Include="Logging\DefaultLogFactory.cs" />
     <Compile Include="Logging\ILog.cs" />
