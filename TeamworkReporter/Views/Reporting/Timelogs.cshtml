@@ -1,7 +1,15 @@
-﻿@using TeamworkReporter.Models.Timelogs
-@model TeamworkReporter.Models.Timelogs.TimelogsViewModel
+﻿@using TeamworkReporter.Models
+@using TeamworkReporter.Models.Timelogs
+@model TimelogsViewModel
 
 @{
+    var people = Model.People ?? Enumerable.Empty<PersonViewModel>();
+    var grid = Model.Grid ?? new TimelogsGridViewModel
+    {
+        Headers = Enumerable.Empty<string>(),
+        Hours = new Dictionary<string, IEnumerable<double>>(),
+        Totals = new Dictionary<string, double>()
+    };
     Func<TimelogsPeriod, TimelogsPeriod, string, string> isPeriod = (t1, t2, a) => t1 == t2 ? a : string.Empty;
 }
 
@@ -14,7 +22,7 @@
         </div>
         <div class="panel panel-default">
             <div class="panel-body">
-                @foreach (var person in Model.People)
+                @foreach (var person in people)
                 {
                     <div class="checkbox">
                         <label>
@@ -52,7 +60,7 @@
                     <thead>
                         <tr>
                             <th>&nbsp;</th>
-                            @foreach (var header in Model.Grid.Headers)
+                            @foreach (var header in grid.Headers)
                             {
                                 <th>@header</th>
                             }
@@ -61,10 +69,10 @@
 
                     </thead>
                     <tbody>
-                        @foreach (var person in Model.Grid.Hours.Keys)
+                        @foreach (var person in grid.Hours.Keys)
                         {
-                            var hours = Model.Grid.Hours[person];
-                            var total = Model.Grid.Totals[person];
+                            var hours = grid.Hours[person];
+                            var total = grid.Totals[person];
                             
                             <tr>
                                 <td>@person</td>
