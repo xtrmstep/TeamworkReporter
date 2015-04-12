@@ -11,7 +11,7 @@
                 // gather selection and post to the server with callback.
                 // the callback will refresh the grid
                 var $people = $(options.timelogPeopleClass).find("input:checked");
-                var period = $(options.timelogPeriodsClass).find("input:checked").val();
+                var period = $(options.timelogPeriodsClass).find("[class*='active']").attr("value");
                 var data = {
                     SelectedPeople: [],
                     Period: period

@@ -85,6 +85,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\ConfigurationStorageTests.cs" />
     <Compile Include="Types\Extensions\HtmlExtensionsTests.cs" />
+    <Compile Include="Types\PeriodsHelperTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TeamworkReporter\TeamworkReporter.csproj">

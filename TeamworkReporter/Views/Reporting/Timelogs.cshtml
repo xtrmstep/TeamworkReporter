@@ -50,14 +50,14 @@
                 </div>
                 <div class="col-md-4">
                     <div class="btn-group periods" data-toggle="buttons">
-                        <label class="btn btn-primary period @isPeriod(Model.Period, TimelogsPeriod.Daily, "active")">
-                            <input type="radio" value="@TimelogsPeriod.Daily" name="@Html.NameFor(m => m.Period)" @isPeriod(Model.Period, TimelogsPeriod.Daily, "checked")/>@TimelogsPeriod.Daily
+                        <label class="btn btn-primary period @isPeriod(Model.Period, TimelogsPeriod.Daily, "active")" value="@TimelogsPeriod.Daily">
+                            <input type="radio" name="@Html.NameFor(m => m.Period)" @isPeriod(Model.Period, TimelogsPeriod.Daily, "checked")/>@TimelogsPeriod.Daily
                         </label>
-                        <label class="btn btn-primary period @isPeriod(Model.Period, TimelogsPeriod.Weekly, "active")">
-                            <input type="radio" value="@TimelogsPeriod.Weekly" name="@Html.NameFor(m => m.Period)" @isPeriod(Model.Period, TimelogsPeriod.Weekly, "checked")/>@TimelogsPeriod.Weekly
+                        <label class="btn btn-primary period @isPeriod(Model.Period, TimelogsPeriod.Weekly, "active")" value="@TimelogsPeriod.Weekly">
+                            <input type="radio" name="@Html.NameFor(m => m.Period)" @isPeriod(Model.Period, TimelogsPeriod.Weekly, "checked")/>@TimelogsPeriod.Weekly
                         </label>
-                        <label class="btn btn-primary period @isPeriod(Model.Period, TimelogsPeriod.Monthly, "active")">
-                            <input type="radio" value="@TimelogsPeriod.Monthly" name="@Html.NameFor(m => m.Period)" @isPeriod(Model.Period, TimelogsPeriod.Monthly, "checked")/>@TimelogsPeriod.Monthly
+                        <label class="btn btn-primary period @isPeriod(Model.Period, TimelogsPeriod.Monthly, "active")" value="@TimelogsPeriod.Monthly">
+                            <input type="radio" name="@Html.NameFor(m => m.Period)" @isPeriod(Model.Period, TimelogsPeriod.Monthly, "checked")/>@TimelogsPeriod.Monthly
                         </label>
                     </div>
                 </div>

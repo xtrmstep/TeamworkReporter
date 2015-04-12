@@ -51,7 +51,7 @@ namespace TeamworkReporter.Controllers
                     SelectedPeople = selectedPeople,
                     Grid = new TimelogsGridViewModel
                     {
-                        Headers = periods.ConvertToNames(timelogsPeriod)
+                        Headers = periods.ConvertToNames(timelogsPeriod, DateTime.Now)
                     }
                 };
 
@@ -87,7 +87,7 @@ namespace TeamworkReporter.Controllers
             var periods = PeriodsHelper.GetPeriods(DateTime.Now, options.Period);
             options.Grid = new TimelogsGridViewModel
             {
-                Headers = periods.ConvertToNames(options.Period)
+                Headers = periods.ConvertToNames(options.Period, DateTime.Now)
             };
             GetUserTimelogs(options, periods);
 
