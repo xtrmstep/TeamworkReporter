@@ -123,6 +123,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\Site.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
