@@ -21,6 +21,15 @@ namespace TeamworkReporter.TwClient
         IEnumerable<TwTimeEntry> Get(DateTime from, DateTime to);
 
         /// <summary>
+        ///     Retrieve All time Entries across all projects for a specific user only
+        /// </summary>
+        /// <param name="from">The start date/time to retrieve from</param>
+        /// <param name="to">The end date/time to retrieve to</param>
+        /// <param name="userId">User ID</param>
+        /// <returns></returns>
+        IEnumerable<TwTimeEntry> Get(DateTime from, DateTime to, int userId);
+
+        /// <summary>
         ///     Retrieve all time entries for a project
         /// </summary>
         /// <param name="projectId">Project ID</param>

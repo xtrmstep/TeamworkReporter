@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Web;
 using System.Web.Mvc;
 using TeamworkReporter.Models;
 using TeamworkReporter.Models.Timelogs;
@@ -13,12 +11,6 @@ namespace TeamworkReporter.Controllers
 {
     public class ReportingController : Controller
     {
-        struct SessionTags
-        {
-            public const string SelectedPeople = "SelectedPeople";
-            public const string Period = "Period";
-        }
-
         [HttpGet]
         public ActionResult Timelogs()
         {
@@ -29,16 +21,18 @@ namespace TeamworkReporter.Controllers
             try
             {
                 #region get all people
+
                 IProxyPeople apiPeople = new TwClient.Api.TwClient
-                            {
-                                SiteName = Settings.Config.Account,
-                                ApiToken = Settings.Config.Token
-                            };
-                var people = apiPeople.Get(); 
+                {
+                    SiteName = Settings.Config.Account,
+                    ApiToken = Settings.Config.Token
+                };
+                var people = apiPeople.Get();
+
                 #endregion
 
                 var selectedPeople = (sesSelectedPeople as IEnumerable<PersonViewModel>) ?? Enumerable.Empty<PersonViewModel>();
-                var timelogsPeriod = sesPeriod != null ? (TimelogsPeriod)sesPeriod : TimelogsPeriod.Daily;
+                var timelogsPeriod = sesPeriod != null ? (TimelogsPeriod) sesPeriod : TimelogsPeriod.Daily;
                 var periods = PeriodsHelper.GetPeriods(DateTime.Now, timelogsPeriod);
                 model = new TimelogsViewModel
                 {
@@ -67,12 +61,33 @@ namespace TeamworkReporter.Controllers
 
         private void GetUserTimelogs(TimelogsViewModel model, DateTime[] periods)
         {
-            if (model.SelectedPeople != null)
-                foreach (var person in model.SelectedPeople)
+            if (model.SelectedPeople == null) return;
+
+            IProxyTimeTracking apiTimeTracking = new TwClient.Api.TwClient
+            {
+                SiteName = Settings.Config.Account,
+                ApiToken = Settings.Config.Token
+            };
+            foreach (var person in model.SelectedPeople)
+            {
+                var personId = int.Parse(person.Id);
+                // get all timelogs for all people
+                var timelogs = apiTimeTracking.Get(periods.First(), DateTime.Today, personId);
+
+                var personTotalMinutes = timelogs.Sum(t => t.Hours * 60 + t.Minutes);
+                model.Grid.Totals.Add(person.FullName, Math.Round(personTotalMinutes/60d, 2));
+
+                var timelogsByPeriod = new List<double>();
+                foreach (var period in periods)
                 {
-                    model.Grid.Hours.Add(person.FullName, new[] {1, 2, 3, 4, 5, 6, 7, 8, 9d});
-                    model.Grid.Totals.Add(person.FullName, 10d);
+                    var totalMinutes = timelogs
+                        .Where(timelog => DateTime.Parse(timelog.Date).Date == period)
+                        .Sum(timelog => timelog.Hours*60 + timelog.Minutes);
+                    var periodTotal = Math.Round(totalMinutes/60d, 2);
+                    timelogsByPeriod.Add(periodTotal);
                 }
+                model.Grid.Hours.Add(person.FullName, timelogsByPeriod);
+            }
         }
 
         [HttpPost]
@@ -92,6 +107,12 @@ namespace TeamworkReporter.Controllers
             GetUserTimelogs(options, periods);
 
             return PartialView("_TimelogGrid", options);
+        }
+
+        private struct SessionTags
+        {
+            public const string SelectedPeople = "SelectedPeople";
+            public const string Period = "Period";
         }
     }
 }

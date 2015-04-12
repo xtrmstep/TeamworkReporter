@@ -24,6 +24,14 @@ namespace TeamworkReporter.TwClient.Api
             return result.TimeEntries;
         }
 
+        IEnumerable<TwTimeEntry> IProxyTimeTracking.Get(DateTime @from, DateTime to, int userId)
+        {
+            var fromdate = @from.Date.ToString("yyyyMMdd");
+            var todate = to.Date.ToString("yyyyMMdd");
+            var result = Request<TimeEntriesApiRequest>(string.Format("/time_entries.json?fromdate={0}&fromtime={1}&todate={2}&totime={3}&userId={4}", fromdate, FROM_TIME, todate, TO_TIME, userId));
+            return result.TimeEntries;
+        }
+
         IEnumerable<TwTimeEntry> IProxyTimeTracking.GetByProject(int projectId)
         {
             var result = Request<TimeEntriesApiRequest>(string.Format("/projects/{0}/time_entries.json", projectId));
