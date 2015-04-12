@@ -16,6 +16,7 @@
     @Html.Partial("_Header")
     @Html.Partial("_Navigation")
     <div class="container-fluid">
+        @Html.AntiForgeryToken()
         @RenderBody()
     </div>
     <footer class="footer">

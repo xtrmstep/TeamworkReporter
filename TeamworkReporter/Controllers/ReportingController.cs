@@ -12,18 +12,29 @@ namespace TeamworkReporter.Controllers
 {
     public class ReportingController : Controller
     {
+        struct SessionTags
+        {
+            public const string SelectedPeople = "SelectedPeople";
+            public const string Period = "Period";
+        }
+
+        [HttpGet]
         public ActionResult Timelogs()
         {
             TimelogsViewModel model;
             try
             {
+                #region get all people
                 IProxyPeople apiPeople = new TwClient.Api.TwClient
-                    {
-                        SiteName = Settings.Config.Account,
-                        ApiToken = Settings.Config.Token
-                    };
-                var people = apiPeople.Get();
+                            {
+                                SiteName = Settings.Config.Account,
+                                ApiToken = Settings.Config.Token
+                            };
+                var people = apiPeople.Get(); 
+                #endregion
 
+                const TimelogsPeriod timelogsPeriod = TimelogsPeriod.Daily;
+                var periods = PeriodsHelper.GetPeriods(DateTime.Now, timelogsPeriod);
                 model = new TimelogsViewModel
                 {
                     People = people.Select(p => new PersonViewModel
@@ -33,30 +44,10 @@ namespace TeamworkReporter.Controllers
                     }),
                     Grid = new TimelogsGridViewModel
                     {
-                        Headers = new[]
-                        {
-                            DateTime.Today.AddDays(-8).ToString("dd/MM/yy"),
-                            DateTime.Today.AddDays(-7).ToString("dd/MM/yy"),
-                            DateTime.Today.AddDays(-6).ToString("dd/MM/yy"),
-                            DateTime.Today.AddDays(-5).ToString("dd/MM/yy"),
-                            DateTime.Today.AddDays(-4).ToString("dd/MM/yy"),
-                            DateTime.Today.AddDays(-3).ToString("dd/MM/yy"),
-                            DateTime.Today.AddDays(-2).ToString("dd/MM/yy"),
-                            DateTime.Today.AddDays(-1).ToString("dd/MM/yy"),
-                            DateTime.Today.ToString("dd/MM/yy")
-                        },
-                        Hours = new Dictionary<string, IEnumerable<double>>
-                        {
-                            {"Alex Guid", new[] {1.5, 4, 3.6, 8, 8, 8,8,8,8}},
-                            {"Alex Guid 2", new[] {1.23, 4.5, 3.67, 8, 8, 8,8,8,8}}
-                        },
-                        Totals = new Dictionary<string, double>
-                        {
-                            {"Alex Guid", 40},
-                            {"Alex Guid 2", 40}
-                        },
+                        Headers = periods.ConvertToNames(timelogsPeriod)
                     }
                 };
+                GetUserTimelogs(model, periods);
             }
             catch (Exception)
             {
@@ -64,6 +55,34 @@ namespace TeamworkReporter.Controllers
             }
 
             return View(model);
+        }
+
+        private void GetUserTimelogs(TimelogsViewModel grid, DateTime[] periods)
+        {
+            
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Timelogs(TimelogsViewModel options)
+        {
+            options.SelectedPeople = options.SelectedPeople ?? new PersonViewModel[] {};
+            Session[SessionTags.SelectedPeople] = options.SelectedPeople;
+            Session[SessionTags.Period] = options.Period;
+
+            var periods = PeriodsHelper.GetPeriods(DateTime.Now, options.Period);
+            options.Grid = new TimelogsGridViewModel
+            {
+                Headers = periods.ConvertToNames(options.Period),
+                Hours = new Dictionary<string, IEnumerable<double>>(),
+                Totals = new Dictionary<string, double>()
+            };
+            foreach (var person in options.SelectedPeople)
+            {
+                options.Grid.Hours.Add(person.FullName, new[] {1, 2, 3, 4, 5, 6, 7, 8, 9d});
+                options.Grid.Totals.Add(person.FullName, 10d);
+            }
+            return PartialView("_TimelogGrid", options);
         }
     }
 }

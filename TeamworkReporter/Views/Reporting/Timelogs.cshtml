@@ -4,13 +4,20 @@
 
 @{
     var people = Model.People ?? Enumerable.Empty<PersonViewModel>();
-    var grid = Model.Grid ?? new TimelogsGridViewModel
-    {
-        Headers = Enumerable.Empty<string>(),
-        Hours = new Dictionary<string, IEnumerable<double>>(),
-        Totals = new Dictionary<string, double>()
-    };
     Func<TimelogsPeriod, TimelogsPeriod, string, string> isPeriod = (t1, t2, a) => t1 == t2 ? a : string.Empty;
+}
+
+@section scripts {
+    <script>
+        $(document).ready(function() {
+            $("input.person, label.period").timelogRefresh({
+                timelogGridClass: ".grid",
+                timelogPeopleClass: ".people",
+                timelogPeriodsClass: ".periods",
+                urlToGetUpdatedGrid: "@Url.Action("Timelogs", "Reporting")"
+            });
+        });
+    </script>
 }
 
 <div class="timelogs">
@@ -27,8 +34,8 @@
                     {
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" value="@person.Id">
-                                @person.FullName
+                                <input type="checkbox" class="person" value="@person.Id" data-fullname="@Html.Raw(person.FullName)">
+                                @Html.Raw(person.FullName)
                             </label>
                         </div>
                     }
@@ -41,51 +48,23 @@
                     <h4>Timesheet</h4>
                 </div>
                 <div class="col-md-4">
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary @isPeriod(Model.Period, TimelogsPeriod.Daily, "active")">
-                            <input type="radio" name="@Html.NameFor(m => m.Period)" @isPeriod(Model.Period, TimelogsPeriod.Daily, "checked")/>@TimelogsPeriod.Daily
+                    <div class="btn-group periods" data-toggle="buttons">
+                        <label class="btn btn-primary period @isPeriod(Model.Period, TimelogsPeriod.Daily, "active")">
+                            <input type="radio" value="@TimelogsPeriod.Daily" name="@Html.NameFor(m => m.Period)" @isPeriod(Model.Period, TimelogsPeriod.Daily, "checked")/>@TimelogsPeriod.Daily
                         </label>
-                        <label class="btn btn-primary @isPeriod(Model.Period, TimelogsPeriod.Weekly, "active")">
-                            <input type="radio" name="@Html.NameFor(m => m.Period)" @isPeriod(Model.Period, TimelogsPeriod.Weekly, "checked")/>@TimelogsPeriod.Weekly
+                        <label class="btn btn-primary period @isPeriod(Model.Period, TimelogsPeriod.Weekly, "active")">
+                            <input type="radio" value="@TimelogsPeriod.Weekly" name="@Html.NameFor(m => m.Period)" @isPeriod(Model.Period, TimelogsPeriod.Weekly, "checked")/>@TimelogsPeriod.Weekly
                         </label>
-                        <label class="btn btn-primary @isPeriod(Model.Period, TimelogsPeriod.Monthly, "active")">
-                            <input type="radio" name="@Html.NameFor(m => m.Period)" @isPeriod(Model.Period, TimelogsPeriod.Monthly, "checked")/>@TimelogsPeriod.Monthly
+                        <label class="btn btn-primary period @isPeriod(Model.Period, TimelogsPeriod.Monthly, "active")">
+                            <input type="radio" value="@TimelogsPeriod.Monthly" name="@Html.NameFor(m => m.Period)" @isPeriod(Model.Period, TimelogsPeriod.Monthly, "checked")/>@TimelogsPeriod.Monthly
                         </label>
                     </div>
                 </div>
             </div>
 
             <div class="panel panel-default">
-                <div class="panel-body">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>&nbsp;</th>
-                                @foreach (var header in grid.Headers)
-                                {
-                                    <th>@header</th>
-                                }
-                                <th>Total</th>
-                            </tr>
-
-                        </thead>
-                        <tbody>
-                            @foreach (var person in grid.Hours.Keys)
-                            {
-                                var hours = grid.Hours[person];
-                                var total = grid.Totals[person];
-                            
-                                <tr>
-                                    <td>@person</td>
-                                    @foreach (var hour in hours)
-                                    {
-                                        <td>@hour</td>
-                                    }
-                                    <td><strong>@total</strong></td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
+                <div class="panel-body grid">
+                    @Html.Partial("_TimelogGrid", Model)
                 </div>
             </div>
         </div>

@@ -1,0 +1,40 @@
+﻿@using TeamworkReporter.Models.Timelogs
+@model TimelogsViewModel
+
+@{
+    var grid = Model.Grid ?? new TimelogsGridViewModel
+    {
+        Headers = Enumerable.Empty<string>(),
+        Hours = new Dictionary<string, IEnumerable<double>>(),
+        Totals = new Dictionary<string, double>()
+    };
+}
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Person</th>
+            @foreach (var header in grid.Headers)
+            {
+                <th>@header</th>
+            }
+            <th>Total</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var person in grid.Hours.Keys)
+        {
+            var hours = grid.Hours[person];
+            var total = grid.Totals[person];
+
+            <tr>
+                <td>@person</td>
+                @foreach (var hour in hours)
+                {
+                    <td>@hour</td>
+                }
+                <td><strong>@total</strong></td>
+            </tr>
+        }
+    </tbody>
+</table>

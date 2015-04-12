@@ -10,7 +10,9 @@ namespace TeamworkReporter
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/jquery.validate.js",
-                "~/Scripts/jquery.validate.unobtrusive.js"
+                "~/Scripts/jquery.validate.unobtrusive.js",
+                "~/Scripts/site.system.js",
+                "~/Scripts/site.js"
                 ));
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
@@ -19,7 +21,9 @@ namespace TeamworkReporter
                 "~/Content/site.css"
                 ));
 
+#if RELEASE
             BundleTable.EnableOptimizations = true;
+#endif
         }
     }
 }
