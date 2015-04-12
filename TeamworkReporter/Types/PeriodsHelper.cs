@@ -86,10 +86,15 @@ namespace TeamworkReporter.Types
 
             if (period == TimelogsPeriod.Monthly)
             {
-                var monthNames = CultureInfo.CurrentCulture.DateTimeFormat.AbbreviatedMonthNames;
-                return periods.Select(p => string.Format("{0},{1}", monthNames[p.Month-1], p.Year.ToString().Substring(2,2)));
+                return periods.Select(GetMonthName);
             }
             throw new NotSupportedException();
+        }
+
+        public static string GetMonthName(DateTime date)
+        {
+            var monthNames = CultureInfo.CurrentCulture.DateTimeFormat.AbbreviatedMonthNames;
+            return string.Format("{0},{1}", monthNames[date.Month-1], date.Year.ToString().Substring(2,2));
         }
     }
 }

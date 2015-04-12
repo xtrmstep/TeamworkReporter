@@ -156,24 +156,30 @@ namespace TeamworkReporter.Types.Tests
         [TestMethod]
         public void ConvertToNames_for_Monthly_periods()
         {
-            var monthNames = CultureInfo.CurrentCulture.DateTimeFormat.AbbreviatedMonthNames;
             var currentDate = new DateTime(2015, 4, 9);
             var expected = new[]
             {
-                monthNames[currentDate.AddMonths(-8).Month-1],
-                monthNames[currentDate.AddMonths(-7).Month-1],
-                monthNames[currentDate.AddMonths(-6).Month-1],
-                monthNames[currentDate.AddMonths(-5).Month-1],
-                monthNames[currentDate.AddMonths(-4).Month-1],
-                monthNames[currentDate.AddMonths(-3).Month-1],
-                monthNames[currentDate.AddMonths(-2).Month-1],
-                monthNames[currentDate.AddMonths(-1).Month-1],
-                monthNames[currentDate.Month-1]
+                PeriodsHelper.GetMonthName(currentDate.AddMonths(-8)),
+                PeriodsHelper.GetMonthName(currentDate.AddMonths(-7)),
+                PeriodsHelper.GetMonthName(currentDate.AddMonths(-6)),
+                PeriodsHelper.GetMonthName(currentDate.AddMonths(-5)),
+                PeriodsHelper.GetMonthName(currentDate.AddMonths(-4)),
+                PeriodsHelper.GetMonthName(currentDate.AddMonths(-3)),
+                PeriodsHelper.GetMonthName(currentDate.AddMonths(-2)),
+                PeriodsHelper.GetMonthName(currentDate.AddMonths(-1)),
+                PeriodsHelper.GetMonthName(currentDate)
             };
             var periods = PeriodsHelper.GetPeriods(currentDate, TimelogsPeriod.Monthly, 9);
             var actual = periods.ConvertToNames(TimelogsPeriod.Monthly, DateTime.Now);
 
             Assert.IsTrue(expected.SequenceEqual(actual));
+        }
+
+        [TestMethod]
+        public void GetMonthName_should_return_monthAbbr_andYear()
+        {
+            var actual = PeriodsHelper.GetMonthName(new DateTime(2015, 4, 9));
+            Assert.AreEqual("Apr,15", actual);
         }
 
         [TestMethod]
