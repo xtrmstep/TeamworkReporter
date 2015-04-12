@@ -9,5 +9,6 @@ namespace TeamworkReporter.Models
     {
         public string Id { get; set; }
         public string FullName { get; set; }
+        public bool Selected { get; set; }
     }
 }

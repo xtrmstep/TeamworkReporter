@@ -30,7 +30,7 @@
                         $(options.timelogGridClass).html(data);
                     })
                     .fail(function () {  })
-                    .always(function () {  });
+                    .always(function() { });
             });
         });
     };

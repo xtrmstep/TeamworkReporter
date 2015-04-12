@@ -5,6 +5,7 @@
 @{
     var people = Model.People ?? Enumerable.Empty<PersonViewModel>();
     Func<TimelogsPeriod, TimelogsPeriod, string, string> isPeriod = (t1, t2, a) => t1 == t2 ? a : string.Empty;
+    Func<PersonViewModel, string> isPersonChecked = p => p.Selected ? "checked" : string.Empty;
 }
 
 @section scripts {
@@ -34,7 +35,7 @@
                     {
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" class="person" value="@person.Id" data-fullname="@Html.Raw(person.FullName)">
+                                <input type="checkbox" class="person" value="@person.Id" data-fullname="@Html.Raw(person.FullName)" @isPersonChecked(person)>
                                 @Html.Raw(person.FullName)
                             </label>
                         </div>

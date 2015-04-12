@@ -1,9 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace TeamworkReporter.Models.Timelogs
 {
     public class TimelogsViewModel
     {
+        public TimelogsViewModel()
+        {
+            Grid = new TimelogsGridViewModel();
+        }
         /// <summary>
         /// All people which can be observed
         /// </summary>

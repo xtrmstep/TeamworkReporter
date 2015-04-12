@@ -11,6 +11,7 @@ namespace TeamworkReporter
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/jquery.validate.js",
                 "~/Scripts/jquery.validate.unobtrusive.js",
+                "~/Scripts/jquery.blockUI.js",
                 "~/Scripts/site.system.js",
                 "~/Scripts/site.js"
                 ));

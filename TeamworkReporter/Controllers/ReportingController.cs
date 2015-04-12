@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using TeamworkReporter.Models;
@@ -21,6 +22,9 @@ namespace TeamworkReporter.Controllers
         [HttpGet]
         public ActionResult Timelogs()
         {
+            var sesSelectedPeople = Session[SessionTags.SelectedPeople];
+            var sesPeriod = Session[SessionTags.Period];
+
             TimelogsViewModel model;
             try
             {
@@ -33,20 +37,24 @@ namespace TeamworkReporter.Controllers
                 var people = apiPeople.Get(); 
                 #endregion
 
-                const TimelogsPeriod timelogsPeriod = TimelogsPeriod.Daily;
+                var selectedPeople = (sesSelectedPeople as IEnumerable<PersonViewModel>) ?? Enumerable.Empty<PersonViewModel>();
+                var timelogsPeriod = sesPeriod != null ? (TimelogsPeriod)sesPeriod : TimelogsPeriod.Daily;
                 var periods = PeriodsHelper.GetPeriods(DateTime.Now, timelogsPeriod);
                 model = new TimelogsViewModel
                 {
                     People = people.Select(p => new PersonViewModel
                     {
                         FullName = string.Format("{0} {1}", p.FirstName, p.LastName),
-                        Id = p.Id.ToString()
+                        Id = p.Id.ToString(),
+                        Selected = selectedPeople.Any(sp => sp.Id == p.Id.ToString())
                     }),
+                    SelectedPeople = selectedPeople,
                     Grid = new TimelogsGridViewModel
                     {
                         Headers = periods.ConvertToNames(timelogsPeriod)
                     }
                 };
+
                 GetUserTimelogs(model, periods);
             }
             catch (Exception)
@@ -57,9 +65,14 @@ namespace TeamworkReporter.Controllers
             return View(model);
         }
 
-        private void GetUserTimelogs(TimelogsViewModel grid, DateTime[] periods)
+        private void GetUserTimelogs(TimelogsViewModel model, DateTime[] periods)
         {
-            
+            if (model.SelectedPeople != null)
+                foreach (var person in model.SelectedPeople)
+                {
+                    model.Grid.Hours.Add(person.FullName, new[] {1, 2, 3, 4, 5, 6, 7, 8, 9d});
+                    model.Grid.Totals.Add(person.FullName, 10d);
+                }
         }
 
         [HttpPost]
@@ -67,21 +80,17 @@ namespace TeamworkReporter.Controllers
         public ActionResult Timelogs(TimelogsViewModel options)
         {
             options.SelectedPeople = options.SelectedPeople ?? new PersonViewModel[] {};
+
             Session[SessionTags.SelectedPeople] = options.SelectedPeople;
             Session[SessionTags.Period] = options.Period;
 
             var periods = PeriodsHelper.GetPeriods(DateTime.Now, options.Period);
             options.Grid = new TimelogsGridViewModel
             {
-                Headers = periods.ConvertToNames(options.Period),
-                Hours = new Dictionary<string, IEnumerable<double>>(),
-                Totals = new Dictionary<string, double>()
+                Headers = periods.ConvertToNames(options.Period)
             };
-            foreach (var person in options.SelectedPeople)
-            {
-                options.Grid.Hours.Add(person.FullName, new[] {1, 2, 3, 4, 5, 6, 7, 8, 9d});
-                options.Grid.Totals.Add(person.FullName, 10d);
-            }
+            GetUserTimelogs(options, periods);
+
             return PartialView("_TimelogGrid", options);
         }
     }

@@ -55,3 +55,5 @@ $.postify = function(value) {
 
     return result;
 };
+
+$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
