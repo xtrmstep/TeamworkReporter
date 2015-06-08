@@ -36,8 +36,22 @@ namespace TeamworkReporter.Controllers
             return View();
         }
 
+        [HttpGet]
+        [Authorize]
         public ActionResult ResetPassword()
         {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult ResetPassword(ResetPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // todo save the password
+                RedirectToAction("ResetPassword", "Auth");
+            }
             return View();
         }
 
