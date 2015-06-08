@@ -7,7 +7,29 @@ namespace TeamworkReporter.Controllers
 {
     public class AuthController : SensitiveController
     {
+        [HttpGet]
         public ActionResult SignUp()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SignUp(SignUpViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //todo register a user
+                return RedirectToAction("SignIn", "Auth");
+            }
+            return View();
+        }
+
+        public ActionResult ForgetPassword()
+        {
+            return View();
+        }
+
+        public ActionResult ResetPassword()
         {
             return View();
         }
@@ -27,7 +49,7 @@ namespace TeamworkReporter.Controllers
         {
             if (ModelState.IsValid && Membership.ValidateUser(model.Email, model.Password))
             {
-                //FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
+                //todo FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
                 if (Url.IsLocalUrl(model.ReturnUrl))
                     return Redirect(model.ReturnUrl);
                 return RedirectToAction("Index", "Home");

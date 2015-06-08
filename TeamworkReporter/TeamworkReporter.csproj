@@ -143,6 +143,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Auth\ForgetPasswordViewModel.cs" />
+    <Compile Include="Models\Auth\SignUpViewModel.cs" />
     <Compile Include="Models\Auth\SignInViewModel.cs" />
     <Compile Include="Models\Command.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -161,6 +163,7 @@
     <Compile Include="Types\Extensions\HtmlExtensions.cs" />
     <Compile Include="Types\PeriodsHelper.cs" />
     <Compile Include="Types\Settings.cs" />
+    <Compile Include="Types\Validations\PropertiesMustMatchAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -181,6 +184,9 @@
     <Content Include="Views\Auth\SignUp.cshtml" />
     <Content Include="Views\Auth\ForgetPassword.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SignInViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SignUpViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ForgetPasswordViewModel.cshtml" />
+    <Content Include="Views\Auth\ResetPassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -212,7 +218,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>5361</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
