@@ -24,7 +24,14 @@ namespace TeamworkReporter.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult ForgetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ForgetPassword(ForgetPasswordViewModel model)
         {
             return View();
         }

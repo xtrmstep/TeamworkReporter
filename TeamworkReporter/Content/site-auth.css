@@ -19,6 +19,10 @@
 
 .form-auth .form-control:focus { z-index: 2; }
 
+.form-auth .single {
+    margin-bottom: 10px;
+}
+
 .form-auth .group-first {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
