@@ -14,6 +14,7 @@ namespace TeamworkReporter.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SignUp(SignUpViewModel model)
         {
             if (ModelState.IsValid)
@@ -31,6 +32,7 @@ namespace TeamworkReporter.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ForgetPassword(ForgetPasswordViewModel model)
         {
             return View();
@@ -45,6 +47,7 @@ namespace TeamworkReporter.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult ResetPassword(ResetPasswordViewModel model)
         {
             if (ModelState.IsValid)
@@ -66,6 +69,7 @@ namespace TeamworkReporter.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SignIn(SignInViewModel model)
         {
             if (ModelState.IsValid && Membership.ValidateUser(model.Email, model.Password))

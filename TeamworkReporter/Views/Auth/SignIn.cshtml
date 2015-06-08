@@ -6,6 +6,7 @@
 
 @using (Html.BeginForm("SignIn", "Auth", FormMethod.Post, new {@class = "form-auth"}))
 {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     <h4>Sign In</h4>
     @Html.EditorForModel()
