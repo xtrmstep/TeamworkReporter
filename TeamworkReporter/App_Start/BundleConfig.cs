@@ -22,6 +22,12 @@ namespace TeamworkReporter
                 "~/Content/site.css"
                 ));
 
+            bundles.Add(new StyleBundle("~/bundles/css-auth").Include(
+                "~/Content/bootstrap.css",
+                "~/Content/bootstrap-theme.css",
+                "~/Content/site-auth.css"
+                ));
+
 #if RELEASE
             BundleTable.EnableOptimizations = true;
 #endif

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using TeamworkReporter.Controllers.Abstractions;
 using TeamworkReporter.Models;
 using TeamworkReporter.Models.Timelogs;
 using TeamworkReporter.TwClient;
@@ -9,7 +10,7 @@ using TeamworkReporter.Types;
 
 namespace TeamworkReporter.Controllers
 {
-    public class ReportingController : Controller
+    public class ReportingController : AuthorizedController
     {
         [HttpGet]
         public ActionResult Timelogs()

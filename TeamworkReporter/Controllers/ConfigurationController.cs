@@ -1,12 +1,13 @@
 ﻿using System.Configuration;
 using System.Web.Mvc;
+using TeamworkReporter.Controllers.Abstractions;
 using TeamworkReporter.Models;
 using TeamworkReporter.Models.Options;
 using TeamworkReporter.Types;
 
 namespace TeamworkReporter.Controllers
 {
-    public class ConfigurationController : Controller
+    public class ConfigurationController : AuthorizedController
     {
         public ActionResult Index()
         {

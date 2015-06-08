@@ -1,0 +1,15 @@
+﻿@model TeamworkReporter.Models.Auth.SignInViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm("SignIn", "Auth", FormMethod.Post, new {@class = "form-signin"}))
+{
+    @Html.ValidationSummary(true)
+    <h4>Sign In</h4>
+    @Html.EditorForModel()
+    <button type="submit" class="btn btn-lg btn-primary btn-block">Sign In</button>
+    <button type="button" class="btn btn-xs btn-default btn-block">Sign Up</button>
+    <button type="button" class="btn btn-xs btn-default btn-block">Forget password?</button>
+}
