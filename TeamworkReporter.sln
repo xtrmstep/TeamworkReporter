@@ -9,6 +9,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamworkReporter.TwClient",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamworkReporter.TwClientTests", "TeamworkReporter.TwClientTests\TeamworkReporter.TwClientTests.csproj", "{0A1AC7E7-1A67-4E58-9CE8-C2A2FF5232C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamworkReporter.Services", "TeamworkReporter.Services\TeamworkReporter.Services.csproj", "{9F1980BA-7E89-488E-A7E0-0C2BA3F1D287}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamworkReporter.Models", "TeamworkReporter.Models\TeamworkReporter.Models.csproj", "{F83FF0BD-D582-43AC-BCE5-CD2E8BB9CB28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamworkReporter.Types", "TeamworkReporter.Types\TeamworkReporter.Types.csproj", "{E5BB2A70-70A0-4366-968E-7EFFE84B0CD2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Teamwork", "Teamwork", "{3AB83191-B8F1-4BFD-B305-E8A283232D03}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C7CBC641-1C21-47CA-8824-A36D21A278BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamworkReporter.SqlServices", "TeamworkReporter.SqlServices\TeamworkReporter.SqlServices.csproj", "{43F05077-D97E-4817-A362-FEA9939C70EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{C44B8B7B-6D26-4D95-9F0A-A61D3068DBB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,8 +45,30 @@ Global
 		{0A1AC7E7-1A67-4E58-9CE8-C2A2FF5232C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A1AC7E7-1A67-4E58-9CE8-C2A2FF5232C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A1AC7E7-1A67-4E58-9CE8-C2A2FF5232C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F1980BA-7E89-488E-A7E0-0C2BA3F1D287}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F1980BA-7E89-488E-A7E0-0C2BA3F1D287}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F1980BA-7E89-488E-A7E0-0C2BA3F1D287}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F1980BA-7E89-488E-A7E0-0C2BA3F1D287}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F83FF0BD-D582-43AC-BCE5-CD2E8BB9CB28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F83FF0BD-D582-43AC-BCE5-CD2E8BB9CB28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F83FF0BD-D582-43AC-BCE5-CD2E8BB9CB28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F83FF0BD-D582-43AC-BCE5-CD2E8BB9CB28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5BB2A70-70A0-4366-968E-7EFFE84B0CD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5BB2A70-70A0-4366-968E-7EFFE84B0CD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5BB2A70-70A0-4366-968E-7EFFE84B0CD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5BB2A70-70A0-4366-968E-7EFFE84B0CD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43F05077-D97E-4817-A362-FEA9939C70EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43F05077-D97E-4817-A362-FEA9939C70EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43F05077-D97E-4817-A362-FEA9939C70EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43F05077-D97E-4817-A362-FEA9939C70EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B6A4EBBF-3B4E-412D-8F72-7ADE7A77D814} = {3AB83191-B8F1-4BFD-B305-E8A283232D03}
+		{2B32B303-8FD4-4D38-BC43-5F197F08125D} = {C7CBC641-1C21-47CA-8824-A36D21A278BC}
+		{0A1AC7E7-1A67-4E58-9CE8-C2A2FF5232C7} = {C7CBC641-1C21-47CA-8824-A36D21A278BC}
+		{43F05077-D97E-4817-A362-FEA9939C70EE} = {C44B8B7B-6D26-4D95-9F0A-A61D3068DBB3}
 	EndGlobalSection
 EndGlobal
