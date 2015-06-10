@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\IDataStorageService.cs" />
-    <Compile Include="Permissions\IAuthenticationService.cs" />
+    <Compile Include="Permissions\ISecurityService.cs" />
     <Compile Include="Permissions\IPermissionsService.cs" />
     <Compile Include="Permissions\IProfileService.cs" />
     <Compile Include="IRepositoryService.cs" />
