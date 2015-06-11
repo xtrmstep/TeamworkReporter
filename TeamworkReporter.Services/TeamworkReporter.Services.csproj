@@ -42,7 +42,7 @@
     <Compile Include="DataAccess\IDataStorageService.cs" />
     <Compile Include="Permissions\ISecurityService.cs" />
     <Compile Include="Permissions\IPermissionsService.cs" />
-    <Compile Include="Permissions\IProfileService.cs" />
+    <Compile Include="Permissions\IAccountService.cs" />
     <Compile Include="IRepositoryService.cs" />
     <Compile Include="Permissions\IRoleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

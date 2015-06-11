@@ -2,6 +2,6 @@
 {
     public class Permission : DbEntity
     {
-
+        public string Name { get; set; }
     }
 }

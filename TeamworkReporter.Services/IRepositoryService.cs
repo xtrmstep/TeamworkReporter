@@ -1,24 +1,12 @@
+using System.Collections.Generic;
 using TeamworkReporter.Models;
 
-namespace TeamworkReporter.Services.Permissions
+namespace TeamworkReporter.Services
 {
-    public interface IRepositoryService
+    public interface IRepositoryService<T> where T : DbEntity
     {
-        /*
-         * List
-         * Assign
-         * Remove
-         * Add
-         */
-    }
-
-    public interface IRepositoryService<T> : IRepositoryService where T : DbEntity
-    {
-        /*
-         * List
-         * Assign
-         * Remove
-         * Add
-         */
+        IList<T> List();
+        bool Remove(params T[] items);
+        bool Add(params T[] items);
     }
 }

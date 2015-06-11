@@ -10,17 +10,13 @@ namespace TeamworkReporter.Services.Permissions
      */
     public interface ISecurityService
     {
-        Profile Login(string usename, string password);
-        void Logout(Token token);
-        bool RegisterProfile(Profile profile);
-        bool UpdatePassword(Profile profile, string newPassword);
+        string RenderPassword();
+        
+        bool Login(string userName, string password);
+        void Logout();
 
-        string ResetPassword(Profile profile);
-
-        /*
-         * RegisterUser
-         * ResetPassword
-         * RenderPassword
-         */
+        bool RequireAuthenticatedUser();
+        bool RequireRoles(params string[] roles);
+        bool RequirePermissions(params string[] permissions);
     }
 }

@@ -2,7 +2,7 @@ using TeamworkReporter.Models;
 
 namespace TeamworkReporter.Services.Permissions
 {
-    public interface IProfileService : IRepositoryService<Profile>
+    public interface IAccountService : IRepositoryService<Account>
     {
 
     }

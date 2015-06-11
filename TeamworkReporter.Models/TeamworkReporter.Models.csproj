@@ -41,7 +41,7 @@
   <ItemGroup>
     <Compile Include="DbEntity.cs" />
     <Compile Include="Permission.cs" />
-    <Compile Include="Profile.cs" />
+    <Compile Include="Account.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
   </ItemGroup>
