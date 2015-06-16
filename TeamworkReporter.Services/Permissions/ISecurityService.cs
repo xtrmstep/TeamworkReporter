@@ -1,18 +1,32 @@
 ﻿using TeamworkReporter.Models;
-using TeamworkReporter.Services.Types;
 
 namespace TeamworkReporter.Services.Permissions
 {
-    /*
-     * What is expected?
-     * helper https://msdn.microsoft.com/en-us/library/webmatrix.webdata.websecurity(v=vs.111).aspx
-     * membership http://www.codeproject.com/Articles/689801/Understanding-and-Using-Simple-Membership-Provider
-     */
+    /// <summary>
+    /// Provides quick access to authentication and authorization routines for a current user
+    /// </summary>
     public interface ISecurityService
     {
+        /// <summary>
+        /// Returns a rendered password
+        /// </summary>
+        /// <returns></returns>
         string RenderPassword();
         
+        /// <summary>
+        /// Authenticate a user by his credentials
+        /// </summary>
+        /// <remarks>
+        /// The related cookie, user object and other related information should be loaded for further use
+        /// </remarks>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         bool Login(string userName, string password);
+
+        /// <summary>
+        /// Remove from memory information about currently authenticated user
+        /// </summary>
         void Logout();
 
         bool RequireAuthenticatedUser();

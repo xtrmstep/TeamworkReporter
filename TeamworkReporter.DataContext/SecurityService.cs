@@ -7,7 +7,7 @@ using TeamworkReporter.Services.Configuration;
 using TeamworkReporter.Services.Permissions;
 using WebMatrix.WebData;
 
-namespace TeamworkReporter.SqlServices
+namespace TeamworkReporter.DataContext
 {
     public class SecurityService : ISecurityService
     {

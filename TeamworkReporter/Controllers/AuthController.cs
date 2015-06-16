@@ -2,11 +2,26 @@
 using System.Web.Security;
 using TeamworkReporter.Controllers.Abstractions;
 using TeamworkReporter.Models.Auth;
+using TeamworkReporter.Services.Permissions;
 
 namespace TeamworkReporter.Controllers
 {
     public class AuthController : SensitiveController
     {
+        ISecurityService _securityService;
+        IAccountService _accountService;
+
+        public AuthController()
+        {
+
+        }
+
+        public AuthController(ISecurityService securityService, IAccountService accountService)
+        {
+            _securityService = securityService;
+            _accountService = accountService;
+        }
+
         [HttpGet]
         public ActionResult SignUp()
         {

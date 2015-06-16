@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TeamworkReporter.Models.Timelogs;
 
@@ -132,7 +133,7 @@ namespace TeamworkReporter.Types.Tests
         {
             // chose the current date so that
             // #1 the current week is not finished yet
-            // #2 some of the previous weeks is starting and ending in different monthes
+            // #2 some of the previous weeks is starting and ending in different months
 
             var currentDate = new DateTime(2015, 4, 9); // thu
             var expected = new[]

@@ -9,6 +9,8 @@ namespace TeamworkReporter.Types
 {
     public static class PeriodsHelper
     {
+        private static CultureInfo enUsCulture = new CultureInfo("en-US");
+
         public static DateTime[] GetPeriods(DateTime current, TimelogsPeriod period, int numberOfPeriods = 9)
         {
             if (numberOfPeriods == 0)
@@ -54,7 +56,7 @@ namespace TeamworkReporter.Types
 
         private static void AddWeekName(List<string> weeks, DateTime weekStart, DateTime weekEnd)
         {
-            var monthNames = CultureInfo.CurrentCulture.DateTimeFormat.AbbreviatedMonthNames;
+            var monthNames = enUsCulture.DateTimeFormat.AbbreviatedMonthNames;
             weeks.Add(weekStart.Month != weekEnd.Month
                 ? string.Format("{0:00},{1}-{2:00},{3}", weekStart.Day, monthNames[weekStart.Month - 1], weekEnd.Day, monthNames[weekEnd.Month - 1])
                 : weekStart.Day != weekEnd.Day
@@ -93,7 +95,7 @@ namespace TeamworkReporter.Types
 
         public static string GetMonthName(DateTime date)
         {
-            var monthNames = CultureInfo.CurrentCulture.DateTimeFormat.AbbreviatedMonthNames;
+            var monthNames = enUsCulture.DateTimeFormat.AbbreviatedMonthNames;
             return string.Format("{0},{1}", monthNames[date.Month-1], date.Year.ToString().Substring(2,2));
         }
     }

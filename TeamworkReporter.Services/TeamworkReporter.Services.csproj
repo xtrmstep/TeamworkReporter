@@ -39,20 +39,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ISettingsService.cs" />
     <Compile Include="DataAccess\IDataStorageService.cs" />
-    <Compile Include="Permissions\ISecurityService.cs" />
-    <Compile Include="Permissions\IPermissionsService.cs" />
-    <Compile Include="Permissions\IAccountService.cs" />
     <Compile Include="IRepositoryService.cs" />
-    <Compile Include="Permissions\IRoleService.cs" />
+    <Compile Include="Permissions\IAccountService.cs" />
+    <Compile Include="Permissions\ISecurityService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Types\Token.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TeamworkReporter.Models\TeamworkReporter.Models.csproj">
       <Project>{f83ff0bd-d582-43ac-bce5-cd2e8bb9cb28}</Project>
       <Name>TeamworkReporter.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Types\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

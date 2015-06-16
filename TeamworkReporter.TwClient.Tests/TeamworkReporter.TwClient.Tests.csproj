@@ -6,8 +6,8 @@
     <ProjectGuid>{0A1AC7E7-1A67-4E58-9CE8-C2A2FF5232C7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TeamworkReporter.TwClientTests</RootNamespace>
-    <AssemblyName>TeamworkReporter.TwClientTests</AssemblyName>
+    <RootNamespace>TeamworkReporter.TwClient.Tests</RootNamespace>
+    <AssemblyName>TeamworkReporter.TwClient.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
