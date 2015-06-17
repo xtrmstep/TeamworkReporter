@@ -4,6 +4,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
+using TeamworkReporter.DataContext;
+using TeamworkReporter.Services;
 using TeamworkReporter.Services.Configuration;
 using TeamworkReporter.Services.Permissions;
 using TeamworkReporter.Types;
@@ -22,18 +24,15 @@ namespace TeamworkReporter
 
             #region Autofac configuration
 
-            //todo issue with WebMatrix reference: cannot load (if add DataContext)
+            var builder = new ContainerBuilder();
+            builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
-            //var builder = new ContainerBuilder();
-            //builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.Register(c => new SettingsService()).As<ISettingsService>().InstancePerRequest();
+            builder.Register(c => new TwReporterContext(c.Resolve<ISettingsService>().ConnectionString)).As<DbContext>().InstancePerRequest();
+            builder.RegisterType<SecurityService>().As<ISecurityService>().InstancePerRequest();
 
-            //builder.Register(c => new SettingsService()).As<ISettingsService>().InstancePerRequest();
-            //builder.Register(c => new TwrDbContext(c.Resolve<ISettingsService>().ConnectionString)).As<DbContext>().InstancePerRequest();
-            //builder.RegisterType<SecurityService>().As<ISecurityService>().InstancePerRequest();
-            //builder.RegisterType<AccountService>().As<IAccountService>().InstancePerRequest();
-            
-            //var container = builder.Build();
-            //DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            var container = builder.Build();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
             #endregion
 

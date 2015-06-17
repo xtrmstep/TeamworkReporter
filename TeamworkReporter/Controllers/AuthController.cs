@@ -9,17 +9,10 @@ namespace TeamworkReporter.Controllers
     public class AuthController : SensitiveController
     {
         ISecurityService _securityService;
-        IAccountService _accountService;
 
-        public AuthController()
-        {
-
-        }
-
-        public AuthController(ISecurityService securityService, IAccountService accountService)
+        public AuthController(ISecurityService securityService)
         {
             _securityService = securityService;
-            _accountService = accountService;
         }
 
         [HttpGet]

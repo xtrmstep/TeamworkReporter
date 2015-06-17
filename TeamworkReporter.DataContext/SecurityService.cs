@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using TeamworkReporter.Services.Configuration;
 using TeamworkReporter.Services.Permissions;
-using WebMatrix.WebData;
 
 namespace TeamworkReporter.DataContext
 {
@@ -16,7 +15,6 @@ namespace TeamworkReporter.DataContext
         public SecurityService(ISettingsService settingsService)
         {
             _settingsService = settingsService;
-            WebSecurity.InitializeDatabaseConnection(_settingsService.ConnectionStringName, "Account","Id", "Email", autoCreateTables: true);
         }
 
         public string RenderPassword()

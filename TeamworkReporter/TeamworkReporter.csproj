@@ -180,13 +180,13 @@
     <Compile Include="Models\Timelogs\TimelogsGridViewModel.cs" />
     <Compile Include="Models\Timelogs\TimelogsPeriod.cs" />
     <Compile Include="Models\Timelogs\TimelogsViewModel.cs" />
+    <Compile Include="Services\SettingsService.cs" />
     <Compile Include="Types\Configuration.cs" />
     <Compile Include="Types\ConfigurationStorage.cs" />
     <Compile Include="Types\Extensions\AppSettings.cs" />
     <Compile Include="Types\Extensions\HtmlExtensions.cs" />
     <Compile Include="Types\PeriodsHelper.cs" />
     <Compile Include="Types\Settings.cs" />
-    <Compile Include="Types\SettingService.cs" />
     <Compile Include="Types\Validations\PropertiesMustMatchAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -227,6 +227,10 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <ProjectReference Include="..\TeamworkReporter.DataContext\TeamworkReporter.DataContext.csproj">
+      <Project>{28c98a50-0cd4-4a1d-a835-a726da9bda4d}</Project>
+      <Name>TeamworkReporter.DataContext</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TeamworkReporter.Models\TeamworkReporter.Models.csproj">
       <Project>{f83ff0bd-d582-43ac-bce5-cd2e8bb9cb28}</Project>
       <Name>TeamworkReporter.Models</Name>

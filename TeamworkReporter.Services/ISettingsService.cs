@@ -15,6 +15,5 @@ namespace TeamworkReporter.Services.Configuration
     public interface ISettingsService
     {
         string ConnectionString { get; }
-        string ConnectionStringName { get; }
     }
 }
