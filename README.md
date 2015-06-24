@@ -1,5 +1,5 @@
 AppVeyor CI:
-Master [![Build status](https://ci.appveyor.com/api/projects/status/yyhfuagjwakbxkp9/branch/Authentication?svg=true)](https://ci.appveyor.com/project/xtrmstep/teamworkreporter/branch/Authentication)
+Authentication [![Build status](https://ci.appveyor.com/api/projects/status/yyhfuagjwakbxkp9/branch/Authentication?svg=true)](https://ci.appveyor.com/project/xtrmstep/teamworkreporter/branch/Authentication)
 
 ##Overview
 
