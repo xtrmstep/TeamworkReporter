@@ -1,3 +1,6 @@
+CI via travis-ci.org:
+[![Build Status](https://travis-ci.org/xtrmstep/TeamworkReporter.svg)](https://travis-ci.org/xtrmstep/TeamworkReporter)
+
 ##Overview
 
 Test URL: http://twreporter.apphb.com/
