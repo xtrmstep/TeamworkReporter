@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamworkReporter.Tests", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamworkReporter.DataContext.Tests", "TeamworkReporter.DataContext.Tests\TeamworkReporter.DataContext.Tests.csproj", "{CFB1C002-4B0A-4130-965F-DB6FEA66CC6C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamworkReporter.Types.Tests", "TeamworkReporter.Types.Tests\TeamworkReporter.Types.Tests.csproj", "{F24A45A0-5CEC-49A2-AE4A-DD7B7F6084F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{CFB1C002-4B0A-4130-965F-DB6FEA66CC6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFB1C002-4B0A-4130-965F-DB6FEA66CC6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFB1C002-4B0A-4130-965F-DB6FEA66CC6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F24A45A0-5CEC-49A2-AE4A-DD7B7F6084F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F24A45A0-5CEC-49A2-AE4A-DD7B7F6084F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F24A45A0-5CEC-49A2-AE4A-DD7B7F6084F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F24A45A0-5CEC-49A2-AE4A-DD7B7F6084F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,5 +91,6 @@ Global
 		{0A1AC7E7-1A67-4E58-9CE8-C2A2FF5232C7} = {C7CBC641-1C21-47CA-8824-A36D21A278BC}
 		{2B32B303-8FD4-4D38-BC43-5F197F08125D} = {C7CBC641-1C21-47CA-8824-A36D21A278BC}
 		{CFB1C002-4B0A-4130-965F-DB6FEA66CC6C} = {C7CBC641-1C21-47CA-8824-A36D21A278BC}
+		{F24A45A0-5CEC-49A2-AE4A-DD7B7F6084F6} = {C7CBC641-1C21-47CA-8824-A36D21A278BC}
 	EndGlobalSection
 EndGlobal

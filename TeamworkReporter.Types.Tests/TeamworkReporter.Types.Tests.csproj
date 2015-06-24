@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CFB1C002-4B0A-4130-965F-DB6FEA66CC6C}</ProjectGuid>
+    <ProjectGuid>{F24A45A0-5CEC-49A2-AE4A-DD7B7F6084F6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TeamworkReporter.DataContext.Tests</RootNamespace>
-    <AssemblyName>TeamworkReporter.DataContext.Tests</AssemblyName>
+    <RootNamespace>TeamworkReporter.Types.Tests</RootNamespace>
+    <AssemblyName>TeamworkReporter.Types.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -16,7 +16,6 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,18 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Moq, Version=4.2.1506.2016, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <HintPath>..\packages\Moq.4.2.1506.2016\lib\net40\Moq.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
@@ -64,31 +51,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Extensions\TypeExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TwReporterContextTests.cs" />
-    <Compile Include="SecurityServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TeamworkReporter.DataContext\TeamworkReporter.DataContext.csproj">
-      <Project>{28C98A50-0CD4-4A1D-A835-A726DA9BDA4D}</Project>
-      <Name>TeamworkReporter.DataContext</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TeamworkReporter.Models\TeamworkReporter.Models.csproj">
-      <Project>{f83ff0bd-d582-43ac-bce5-cd2e8bb9cb28}</Project>
-      <Name>TeamworkReporter.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TeamworkReporter.Services\TeamworkReporter.Services.csproj">
-      <Project>{9f1980ba-7e89-488e-a7e0-0c2ba3f1d287}</Project>
-      <Name>TeamworkReporter.Services</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TeamworkReporter.Types\TeamworkReporter.Types.csproj">
-      <Project>{e5bb2a70-70a0-4366-968e-7effe84b0cd2}</Project>
+      <Project>{E5BB2A70-70A0-4366-968E-7EFFE84B0CD2}</Project>
       <Name>TeamworkReporter.Types</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

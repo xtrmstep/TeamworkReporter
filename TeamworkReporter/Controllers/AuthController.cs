@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
 using TeamworkReporter.Controllers.Abstractions;
+using TeamworkReporter.DataContext;
 using TeamworkReporter.Models.Auth;
 using TeamworkReporter.Services.Permissions;
 
@@ -9,9 +10,11 @@ namespace TeamworkReporter.Controllers
     public class AuthController : SensitiveController
     {
         ISecurityService _securityService;
+        ITwrDbContext _context;
 
-        public AuthController(ISecurityService securityService)
+        public AuthController(ITwrDbContext context, ISecurityService securityService)
         {
+            _context = context;
             _securityService = securityService;
         }
 
@@ -80,9 +83,9 @@ namespace TeamworkReporter.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SignIn(SignInViewModel model)
         {
-            if (ModelState.IsValid && Membership.ValidateUser(model.Email, model.Password))
+            if (ModelState.IsValid && _securityService.Login(model.Email, model.Password))
             {
-                //todo FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
+                //todo !!! FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
                 if (Url.IsLocalUrl(model.ReturnUrl))
                     return Redirect(model.ReturnUrl);
                 return RedirectToAction("Index", "Home");

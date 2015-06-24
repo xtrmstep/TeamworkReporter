@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeamworkReporter.Models;
 using TeamworkReporter.Services.Configuration;
 using TeamworkReporter.Services.Permissions;
 
@@ -10,9 +12,10 @@ namespace TeamworkReporter.DataContext
 {
     public class SecurityService : ISecurityService
     {
-        ISettingsService _settingsService;
+        private ISettingsService _settingsService;
+        private IDbSet<Account> _accounts;
 
-        public SecurityService(ISettingsService settingsService)
+        public SecurityService(ISettingsService settingsService, IDbSet<Account> accounts)
         {
             _settingsService = settingsService;
         }

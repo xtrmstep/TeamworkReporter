@@ -5,6 +5,7 @@ using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
 using TeamworkReporter.DataContext;
+using TeamworkReporter.Models;
 using TeamworkReporter.Services;
 using TeamworkReporter.Services.Configuration;
 using TeamworkReporter.Services.Permissions;
@@ -28,8 +29,9 @@ namespace TeamworkReporter
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
             builder.Register(c => new SettingsService()).As<ISettingsService>().InstancePerRequest();
-            builder.Register(c => new TwReporterContext(c.Resolve<ISettingsService>().ConnectionString)).As<DbContext>().InstancePerRequest();
+            builder.Register(c => new TwReporterContext(c.Resolve<ISettingsService>().ConnectionString)).As<ITwrDbContext>().InstancePerRequest();
             builder.RegisterType<SecurityService>().As<ISecurityService>().InstancePerRequest();
+            builder.Register(c => c.Resolve<ITwrDbContext>().Accounts).As<IDbSet<Account>>().InstancePerRequest();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
